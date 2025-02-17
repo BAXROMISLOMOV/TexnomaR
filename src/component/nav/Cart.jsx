@@ -155,4 +155,4 @@ function Navsearch() {
   );
 }
 
-export default ;
+export default Navsearch;
