@@ -7,6 +7,7 @@ import FavouriteIcon from "../../assets/Icons/Heart";
 import Cart from "../../assets/Icons/Shoping";
 import Search from "../../assets/Icons/Search";
 import UserIcon from "../../assets/Icons/User";
+
 function Navsearch() {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -42,116 +43,116 @@ function Navsearch() {
   const clearSelectedItems = () => {
     setSelectedItems({});
     setSelectAll(false);
+    state.setSavatcha([]);
   };
 
   return (
     <div className="bg-gray-100 px-4 py-5">
       <div className="container m-auto flex items-center justify-between px-5">
         <div className="flex gap-5">
-    <Link to="/">
-      <img className=""src="https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg"alt="logo"
-        />
-      </Link>
-      <button className="flex items-center gap-2 bg-amber-400 px-5 py-2 rounded font-semibold">
-        <Menu /> Katalog
-      </button>
-    </div>
+          <Link to="/">
+            <img src="https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg" alt="Texnomart Logo" />
+          </Link>
+          <button className="flex items-center gap-2 bg-yellow-400 px-5 py-2 rounded font-semibold">
+            <Menu /> Katalog
+          </button>
+        </div>
 
-  <div className="flex items-center border-2 border-amber-500 rounded w-[700px] p-2">
-      <Search className="w-5 h-5 text-gray-500" />
-      <input
+        <div className="flex items-center border-2 border-yellow-500 rounded w-[700px] p-2">
+          <Search className="w-5 h-5 text-gray-500" />
+          <input
             value={input}
-  
             onChange={(e) => setInput(e.target.value)}
-  
-      className="pl-2 outline-none w-full"
+            className="pl-2 outline-none w-full"
             type="text"
-                  placeholder="Qidirish..."
-  
-  />
-  
-  </div>
+            placeholder="Qidirish..."
+          />
+        </div>
 
         <div className="flex items-center gap-5">
-     <div className="flex flex-col items-center">
-       <UserIcon />
-       <p>Krish</p>
-     </div>
-     <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center">
+            <UserIcon />
+            <p>Krish</p>
+          </div>
+          <div className="flex flex-col items-center">
             <FavouriteIcon />
-        <p>Sevimli</p>
-      </div>
-      <div
-        onClick={showModal}
-        className="flex flex-col items-center relative cursor-pointer"
+            <p>Sevimli</p>
+          </div>
+          <div
+            onClick={showModal}
+            className="flex flex-col items-center relative cursor-pointer"
           >
             <Cart />
-     {cartCount > 0 && (
-       <span className="absolute -top-1 -right-2 bg-yellow-500 text-white text-xs font-bold flex items-center justify-center rounded-full w-5 h-5">
-         {cartCount}
-       </span>
-     )}
+            {cartCount > 0 && (
+              <span className="absolute bottom-[-20px] right-2 bg-yellow-500 text-white text-xs font-bold flex items-center justify-center rounded-full w-5 h-5">
+                {cartCount}
+              </span>
+            )}
             <p>Savatcha</p>
           </div>
         </div>
       </div>
 
       <Modal
-        title={` Savatchangiz (${countSelectedItems()} ta tanlandi)`}
-    open={open}
-    onOk={handleOk}
-    confirmLoading={confirmLoading}
-    onCancel={handleCancel}
-    width={1300}
-  >
-    {cartCount > 0 ? (
-      <>
-        <div className="flex justify-between border-b pb-5 pt-10">
-          <label className="text-xl flex items-center gap-2 cursor-pointer">
-       <input
-        type="checkbox"
-        checked={selectAll}
-        onChange={toggleSelectAll}
-        className="w-5 h-5 border border-gray-400 rounded cursor-pointer"
-           />
-            Hammasini tanlash
-          </label>
-       <button
-         onClick={clearSelectedItems}
-         className="text-xl text-yellow-500 cursor-pointer"
-       >
-         Tanlanganlarni o'chirish
-          </button>
-        </div>
-      <div className="mt-5">
-          {state.savatcha.map((item) => (
-            <label
-         key={item.mahsulot.id}
-         className="flex items-center gap-2 cursor-pointer py-2"
-       >
-         <input
-           type="checkbox"
-                checked={!!selectedItems[item.mahsulot.id]}
-             onChange={() =>
-               setSelectedItems((prev) => ({
-                 ...prev,
-                    [item.mahsulot.id]: !prev[item.mahsulot.id],
-                  }))
-                }
-                className="w-5 h-5 border border-gray-400 rounded cursor-pointer"
-              />
-              <img src={item.mahsulot.image}alt={item.mahsulot.name} className="w-12 h-12 object-cover rounded"/>
-              <p>{item.mahsulot.name}</p>
+        title={`Savatchangiz (${countSelectedItems()} ta tanlandi)`}
+        open={open}
+        onOk={handleOk}
+        confirmLoading={confirmLoading}
+        onCancel={handleCancel}
+        width={650}
+      >
+        {cartCount > 0 ? (
+          <>
+            <div className="flex justify-between border-b pb-5 pt-10">
+              <label className="text-xl flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selectAll}
+                  onChange={toggleSelectAll}
+                  className="w-5 h-5 border-2 border-yellow-500 rounded cursor-pointer focus:ring-yellow-500"
+                />
+                <span className="text-yellow-600 font-semibold">Hammasini tanlash</span>
+              </label>
+              <button
+                onClick={clearSelectedItems}
+                className="text-xl text-yellow-600 hover:text-yellow-700 cursor-pointer font-semibold"
+              >
+                Tanlanganlarni o'chirish
+              </button>
+            </div>
+            <div className="mt-5">
+              {state.savatcha.map((item) => (
+                <label
+                  key={item.mahsulot.id}
+                  className="flex items-center gap-4 cursor-pointer py-3 hover:bg-gray-50 px-4 rounded-lg"
+                >
+                  <input
+                    type="checkbox"
+                    checked={!!selectedItems[item.mahsulot.id]}
+                    onChange={() =>
+                      setSelectedItems((prev) => ({
+                        ...prev,
+                        [item.mahsulot.id]: !prev[item.mahsulot.id],
+                      }))
+                    }
+                    className="w-5 h-5 border-2 border-yellow-500 rounded cursor-pointer focus:ring-yellow-500"
+                  />
+                  <img
+                    src={item.mahsulot.image}
+                    alt={item.mahsulot.name}
+                    className="w-16 h-16 object-cover rounded-lg"
+                  />
+                  <p className="text-lg text-gray-700 font-medium">{item.mahsulot.name}</p>
                 </label>
               ))}
             </div>
           </>
         ) : (
-          <p>Savatchangiz bo‘sh</p>
+          <p className="text-center text-gray-500">Savatchangiz bo‘sh</p>
         )}
       </Modal>
     </div>
   );
 }
 
-export default Navsearch;
+export default ;
