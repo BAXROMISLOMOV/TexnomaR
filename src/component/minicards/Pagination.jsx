@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ProduktCard from "../Card/ProductCard";
-import { Button } from "antd";
+import ProduktCard from "../Card/cardsPage";
+import { Button, Spin } from "antd";
 import Store from "../Card/filterBtn";
 
 function CatalogPage() {
   const [cardlar, setCardlar] = useState(null);
-  const [pagination, setPeginetion] = useState(1);
+  const [pagination, setPagination] = useState(1);
   const { slug } = useParams();
 
   useEffect(() => {
@@ -26,43 +26,38 @@ function CatalogPage() {
 
   if (!cardlar) {
     return (
-      <div className="flex justify-center items-center h-screen">
-      
+      <div className="flex justify-center items-right
+       h-screen">
+        <Spin size="large" />
       </div>
     );
   }
 
   return (
     <div className="flex flex-col p-4 gap-4">
-     
-      <div className="w-full lg:w-3/4">
-      <Store/>
-        <div className="grid grid-cols-1 pl-500px sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {cardlar.products.map((item) => (
-            <ProduktCard key={item.id} item={item} />
-          ))}
-        </div>
+      <Store />
 
-        <div className="flex justify-center mt-8 gap-2">
-          {Array(cardlar.pagination.total_page)
-            .fill(1)
-            .map((_, i) => {
-              const page = i + 1;
-              return (
-                <Button
-                  key={page}
-                  type={pagination === page ? "primary" : "default"}
-                  onClick={() => setPeginetion(page)}
-                  className="w-10 h-10 flex items-center justify-center"
-                >
-                  {page}
-                </Button>
-              );
-            })}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {cardlar.products?.map((item) => (
+          <ProduktCard key={item.id} item={item} />
+        ))}
+      </div>
+
+      <div className="flex justify-center mt-8 gap-2">
+        {Array.from({ length: cardlar.pagination.total_page }, (_, i) => i + 1).map((page) => (
+          <Button
+            key={page}
+            type={pagination === page ? "primary" : "default"}
+            onClick={() => setPagination(page)}
+            className="w-10 h-10 flex items-center justify-center"
+          >
+            {page}
+          </Button>
+        ))}
       </div>
     </div>
   );
 }
+
 
 export default CatalogPage;

@@ -15,7 +15,6 @@ function Corusel() {
   ];
 
   const [index, setIndex] = useState(0);
-
   const Next = () => {
     if (index < url.length - 1) {
       setIndex(index + 1);

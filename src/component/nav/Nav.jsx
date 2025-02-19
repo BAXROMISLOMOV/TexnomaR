@@ -1,9 +1,9 @@
 import React from "react";
-import LocationIcon from '../../assets/Icons/LokationIcon'
-import Call from '../../assets/Icons/Call'
-import Global from '../../assets/Icons/global'
-import Location from './Location'
-import NavSearch from './Cart'
+import LocationIcon from '../../Icons/LokationIcon'
+import CallIcon from '../../Icons/Call'
+import Global from '../../Icons/global'
+import NavSearch from './Navlog'
+import Navbar from "./Navbar";
 
 function Nav() {
   return (
@@ -23,7 +23,7 @@ function Nav() {
       </div>
       <div className="flex items-center gap-5">
         <div className="flex items-center gap-2 font-semibold cursor-pointer">
-          <Call style={{ color: "#ffffff" }} />
+          <CallIcon style={{ color: "#ffffff" }} />
           <p>+998 93 874 40 25</p>
         </div>
         <div className="border px-2 py-1 rounded-full flex items-center gap-2 cursor-pointer">
@@ -35,7 +35,7 @@ function Nav() {
       </div>
       </div>
       <NavSearch />
-      <Location />
+      <Navbar />
     </>
     </div>
   );

@@ -11,7 +11,6 @@ function  HomePage() {
     useEffect(() => {
       axios.get("https://apqi.example.com/data")
         .then((response) => setData(response.data))
-        .catch((error) => console.error("Xatolik:", error));
     }, []);
   
     return (

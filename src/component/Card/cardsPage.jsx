@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, message } from "antd";
-import Shopping from "../../assets/Icons/Shoping";
+import Shopping from "../../Icons/Shoping";
 import useMyStore from "../../my-zustand";
 
 function ProduktCard({ item }) {

@@ -3,7 +3,7 @@ import useMyStore from "../../my-zustand";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-function Location() {
+function Navbar() {
   const state = useMyStore();
 
   useEffect(() => {
@@ -19,6 +19,7 @@ function Location() {
         console.error("", error);
       });
   }, []);
+  
 
   return (
     <div>
@@ -36,4 +37,4 @@ function Location() {
   );
 }
 
-export default Location;
+export default Navbar;

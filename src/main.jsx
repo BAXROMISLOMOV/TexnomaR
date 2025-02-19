@@ -5,7 +5,7 @@ import Nav from "./component/nav/Nav.jsx";
 import "./index.css";
 import Pagination from "./component/minicards/Pagination";
 import App from "./App.jsx";
-import AboutProduct from "./component/Card/AboutProduct.jsx";
+import AboutProduct from "./component/Card/ProductPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

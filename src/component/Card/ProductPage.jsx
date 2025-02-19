@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import {  message,  } from "antd";
-import FavouriteIcon from "../../assets/Icons/Heart";
-import None from "../../assets/Icons/none";
-
+import FavouriteIcon from "../../Icons/Heart";
+import None from "../../Icons/none";
+import Cardaksesores from "./Cardaksesores"
 
 function AboutProduct() {
   const [product, setProduct] = useState({});
-  const [messageApi, contextHolder] = message.useMessage();
   const { id } = useParams();
 
   useEffect(() => {
@@ -109,6 +107,7 @@ function AboutProduct() {
           </div>
         </div>
       </div>
+      <Cardaksesores/>
     </div>
   );
 }

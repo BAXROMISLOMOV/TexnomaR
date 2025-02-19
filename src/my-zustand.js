@@ -6,6 +6,8 @@ const useMyStore = create(() => {
     savatcha: [],
     like: [],
     haridlar: [],
+    currenSort:"price",
+    tartibi:false
   };
 });
 export default useMyStore;

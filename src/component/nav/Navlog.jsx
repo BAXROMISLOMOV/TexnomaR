@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "antd";
 import useMyStore from "../../my-zustand";
-import Menu from "../../assets/Icons/menu";
-import FavouriteIcon from "../../assets/Icons/Heart";
-import Cart from "../../assets/Icons/Shoping";
-import Search from "../../assets/Icons/Search";
-import UserIcon from "../../assets/Icons/User";
+import Menu from "../../Icons/menu";
+import FavouriteIcon from "../../Icons/Heart";
+import Cart from "../../Icons/Shoping";
+import Search from "../../Icons/Search";
+import UserIcon from "../../Icons/User";
+import { message } from "antd";
 
-function Navsearch() {
+function Navlog() {
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
   const [selectedItems, setSelectedItems] = useState({});
   const [selectAll, setSelectAll] = useState(false);
   const [input, setInput] = useState("");
   const state = useMyStore();
   const cartCount = state.savatcha.length;
+
 
   const showModal = () => setOpen(true);
   const handleOk = () => {
@@ -38,7 +39,8 @@ function Navsearch() {
     setSelectAll(!selectAll);
   };
 
-  const countSelectedItems = () => Object.values(selectedItems).filter(Boolean).length;
+  const countSelectedItems = () =>
+    Object.values(selectedItems).filter(Boolean).length;
 
   const clearSelectedItems = () => {
     setSelectedItems({});
@@ -51,7 +53,10 @@ function Navsearch() {
       <div className="container m-auto flex items-center justify-between px-5">
         <div className="flex gap-5">
           <Link to="/">
-            <img src="https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg" alt="Texnomart Logo" />
+            <img
+              src="https://texnomart.uz/_nuxt/img/texnomart-logo.3b2791c.svg"
+              alt="Texnomart Logo"
+            />
           </Link>
           <button className="flex items-center gap-2 bg-yellow-400 px-5 py-2 rounded font-semibold">
             <Menu /> Katalog
@@ -84,11 +89,13 @@ function Navsearch() {
           >
             <Cart />
             {cartCount > 0 && (
-              <span className="absolute bottom-[-20px] right-2 bg-yellow-500 text-white text-xs font-bold flex items-center justify-center rounded-full w-5 h-5">
+              <span className="absolute bottom-[35px] right-3  bg-yellow-500 text-white text-xs font-bold flex items-center justify-center rounded-full w-4 h-4">
                 {cartCount}
               </span>
-            )}
+              )}
             <p>Savatcha</p>
+            
+
           </div>
         </div>
       </div>
@@ -97,9 +104,11 @@ function Navsearch() {
         title={`Savatchangiz (${countSelectedItems()} ta tanlandi)`}
         open={open}
         onOk={handleOk}
-        confirmLoading={confirmLoading}
         onCancel={handleCancel}
         width={650}
+        onClick={() => {
+          message.success("Item added successfully!");
+}}
       >
         {cartCount > 0 ? (
           <>
@@ -111,7 +120,9 @@ function Navsearch() {
                   onChange={toggleSelectAll}
                   className="w-5 h-5 border-2 border-yellow-500 rounded cursor-pointer focus:ring-yellow-500"
                 />
-                <span className="text-yellow-600 font-semibold">Hammasini tanlash</span>
+                <span className="text-yellow-600 font-semibold">
+                  Hammasini tanlash
+                </span>
               </label>
               <button
                 onClick={clearSelectedItems}
@@ -142,7 +153,9 @@ function Navsearch() {
                     alt={item.mahsulot.name}
                     className="w-16 h-16 object-cover rounded-lg"
                   />
-                  <p className="text-lg text-gray-700 font-medium">{item.mahsulot.name}</p>
+                  <p className="text-lg text-gray-700 font-medium">
+                    {item.mahsulot.name}
+                  </p>
                 </label>
               ))}
             </div>
@@ -155,4 +168,4 @@ function Navsearch() {
   );
 }
 
-export default Navsearch;
+export default Navlog;

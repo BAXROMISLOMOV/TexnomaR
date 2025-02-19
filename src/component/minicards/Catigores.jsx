@@ -11,6 +11,7 @@ function Categories() {
       .then((res) => setCategories(res.data.data.data))
       .catch((err) => console.error("Error occurred:", err));
   }, []);
+          
 
   const handleNext = useCallback(() => {
     if (categories.length > 0) {
