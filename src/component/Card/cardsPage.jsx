@@ -40,7 +40,7 @@ function ProduktCard({ item }) {
     <div className="flex ">
       <div
         key={item.id}
-        className="bg-white shadow-md rounded-2xl p-4 items-center transition transform hover:scale-105 hover:shadow-lg w-64"
+        className="bg-white shadow-md rounded-2xl  items-center transition transform hover:scale-105 hover:shadow-lg w-64"
       >
         <Link
           to={`/product/${item.id}`}

@@ -1,10 +1,8 @@
 import { Button, Checkbox, Collapse } from "antd";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import axios from "axios";
-import React, { Children, useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Haridlar({ filter }) {
-  console.log(filter);
+function Sidefilter({ filter }) {
   const [qisqartma, setQisqartma] = useState(false);
   return (
     <>
@@ -62,4 +60,4 @@ function Haridlar({ filter }) {
   );
 }
 
-export default Haridlar;
+export default Sidefilter;
