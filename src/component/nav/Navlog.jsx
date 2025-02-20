@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Modal } from "antd";
+import { Button, Modal } from "antd";
 import useMyStore from "../../my-zustand";
 import Menu from "../../Icons/menu";
 import FavouriteIcon from "../../Icons/Heart";
 import Cart from "../../Icons/Shoping";
 import Search from "../../Icons/Search";
-import UserIcon from "../../Icons/User";
 import { message } from "antd";
+import Login from "./Navbarlogin";
 
 function Navlog() {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,6 @@ function Navlog() {
   const [input, setInput] = useState("");
   const state = useMyStore();
   const cartCount = state.savatcha.length;
-
 
   const showModal = () => setOpen(true);
   const handleOk = () => {
@@ -76,7 +75,8 @@ function Navlog() {
 
         <div className="flex items-center gap-5">
           <div className="flex flex-col items-center">
-            <UserIcon />
+          
+              <Login/>
             <p>Krish</p>
           </div>
           <div className="flex flex-col items-center">
