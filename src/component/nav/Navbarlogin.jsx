@@ -69,9 +69,12 @@ function Login() {
               <Button
                 htmlType="submit"
                 type="primary"
-                className="custom-buttom"
                 size="large"
                 loading={loading}
+                style={{
+                  background: "yellow",
+                  color: "black",
+                }}
               >
                 KODNI OLISH
               </Button>
@@ -99,9 +102,11 @@ function Login() {
               className="custom-buttom"
               size="large"
               loading={loading}
+              style={{ background: "yellow",
+                color:"black",
+               }}
             >
-              SMS kodni kiriting
-               Raqamga kod yuborildi
+              SMS kodni kiriting Raqamga kod yuborildi
             </Button>
           </div>
         )}
